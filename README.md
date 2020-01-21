@@ -1,0 +1,2 @@
+# batchQueryOrInsertNativeProject
+百万级数据采用原生框架分批处理
