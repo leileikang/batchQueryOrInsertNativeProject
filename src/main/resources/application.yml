@@ -1,0 +1,4 @@
+#本地使用dev 测试使用test 正式使用prod
+spring:
+  profiles:
+    active: dev

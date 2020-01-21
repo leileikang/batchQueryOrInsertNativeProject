@@ -1,0 +1,55 @@
+spring:
+  datasource:
+    druid:
+      url: jdbc:dm://192.168.71.77:5236/CEISEFFECTIVENESS?zeroDateTimeBehavior=convertToNull&useUnicode=true&characterEncoding=utf-8
+      driver-class-name: dm.jdbc.driver.DmDriver
+      username: CEISEFFECTIVENESS
+      password: CEISEFFECTIVENESS@123
+      initial-size: 3
+      max-active: 20
+      min-idle: 5
+      max-wait: 60000
+      validation-query: select 1 from dual
+      test-while-idle: true
+      test-on-borrow: true
+      test-on-return: false
+      time-between-eviction-runs-millis: 600000
+      remove-abandoned-timeout: 3000
+      remove-abandoned: false
+      log-abandoned: true
+      min-evictable-idle-time-millis: 3600000
+  jpa:
+    generate-ddl: false
+    show-sql: true
+    format-sql: true
+    properties:
+      hibernate:
+       dialect: org.hibernate.dialect.DmDialect
+  application:
+    name: batchQueryOrInsertNativeProject
+  jackson:
+    default-property-inclusion: non_empty
+    date-format: yyyy-MM-dd HH:mm:ss
+    joda-date-time-format: yyyy-MM-dd HH:mm:ss
+    time-zone: GMT+8
+  servlet:
+    multipart:
+      max-file-size: 100MB
+      max-request-size: 100MB
+server:
+  port: 8101
+  tomcat:
+    basedir: ./logs
+    accesslog:
+      enabled: true
+      directory: ${spring.application.name}_access_log
+      pattern: "%t [%I] %{X-Forwarded-For}i %l %u %r %s %b %D"
+
+logging:
+  file: ./logs/${spring.application.name}.log
+  level:
+    root: info
+
+
+http.read-timeout: 15000
+http.connect-timeout: 25000
